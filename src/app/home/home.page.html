@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Payments
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+      <ion-item>
+          <ion-label>{{location?.name}}</ion-label>
+        </ion-item>
+    <ion-item>
+      <ion-label>Category</ion-label>
+      <ion-select [(ngModel)]="slectedCategory" name="category" (ionChange)="onChange($event)" placeholder="Select category">
+        <ion-select-option *ngFor="let c of categories$" [value]=c name="category">{{c.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{price[0]?.price}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-button [disabled]="!locationId || !slectedCategory" (click)=presentAlert()>Make payment</ion-button>
+</ion-content>

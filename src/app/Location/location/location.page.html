@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Location</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item>
+      <ion-label>Location</ion-label>
+      <ion-select [(ngModel)]="location" #loc (ionChange)="GetTollbooths(loc.value.id)" placeholder="Select location">
+        <ion-select-option *ngFor="let l of locations$"  [value]=l  name="location">{{l.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tollbooth</ion-label>
+      <ion-select [(ngModel)]="tollboothSelected" placeholder="Select location">
+        <ion-select-option *ngFor="let t of tollbooths"  [value]=t  name="tollbooth">{{t.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button [disabled] ="location === undefined" (click)="ChooseLocation()">Next</ion-button>
+</ion-content>
